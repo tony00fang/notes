@@ -269,6 +269,21 @@ NVIDIA 最聪明的地方，不是试图把五层全部自己做掉。
 
 ## 参考
 
-- Dwarkesh Patel 播客：Jensen Huang 访谈
-- NVIDIA 官方博客：AI Is a 5-Layer Cake
-- NVIDIA 官方数据中心、DGX Cloud、Certified Systems、CUDA-X 相关资料
+- Dwarkesh Patel 播客：Jensen Huang 访谈  
+  https://www.dwarkesh.com/p/jensen-huang
+- NVIDIA 官方博客：AI Is a 5-Layer Cake  
+  https://blogs.nvidia.com/blog/ai-5-layer-cake/
+- NVIDIA Data Center  
+  https://www.nvidia.com/en-us/data-center/
+- NVIDIA DGX Cloud  
+  https://www.nvidia.com/en-us/data-center/dgx-cloud/
+- NVIDIA Certified Systems  
+  https://www.nvidia.com/en-us/data-center/products/certified-systems/
+- NVIDIA CUDA-X  
+  https://www.nvidia.com/en-us/technologies/cuda-x/
+
+---
+
+## 备注
+
+后续在 docs 仓库里新增或整理分析类文档时，参考资料默认应包含可点击原始链接，避免只写来源名称。
