@@ -45,6 +45,7 @@ jobs:
       - name: Check built links stay under /notes/
         run: |
           grep -q 'VPNav' .vitepress/dist/index.html
+          grep -q 'note-home' .vitepress/dist/index.html
           grep -q '/notes/ai-infra/nvidia-five-layer-cake-and-moat' .vitepress/dist/index.html
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

@@ -2,6 +2,7 @@ import { existsSync, readFileSync } from 'node:fs'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { describe, expect, it } from 'vitest'
+import { featuredNotes } from '../.vitepress/featured'
 import { sidebar } from '../.vitepress/sidebar'
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..')
@@ -25,13 +26,20 @@ describe('notes site', () => {
     }
   })
 
+  it('keeps featured home notes pointing at markdown files', () => {
+    expect(featuredNotes.length).toBeGreaterThan(0)
+    for (const note of featuredNotes) {
+      expect(existsSync(pagePath(note.href)), note.href).toBe(true)
+    }
+  })
+
+  it('prefixes home note links with the GitHub Pages base', () => {
+    const source = readFileSync(join(root, '.vitepress/theme/HomeNotes.vue'), 'utf8')
+    expect(source).toContain('withBase(note.href)')
+  })
+
   it('keeps markdown article links relative so they stay under /notes/', () => {
-    const files = [
-      'index.md',
-      'ai-infra/index.md',
-      'agents/index.md',
-      'templates/index.md',
-    ]
+    const files = ['ai-infra/index.md', 'agents/index.md', 'templates/index.md']
     for (const file of files) {
       const text = readFileSync(join(root, file), 'utf8')
       expect(text, file).not.toMatch(/\]\(\/[a-zA-Z]/)
