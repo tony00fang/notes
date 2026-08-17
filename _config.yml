@@ -1,0 +1,31 @@
+title: Notes
+description: 长期笔记、分析文档与研究记录
+url: https://tony00fang.github.io
+baseurl: /notes
+
+remote_theme: just-the-docs/just-the-docs
+
+plugins:
+  - jekyll-remote-theme
+  - jekyll-seo-tag
+
+search_enabled: true
+heading_anchors: true
+color_scheme: light
+
+aux_links:
+  GitHub:
+    - https://github.com/tony00fang/notes
+
+aux_links_new_tab: true
+
+nav_external_links: []
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
+
+exclude:
+  - README.md

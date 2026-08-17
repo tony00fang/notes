@@ -1,3 +1,9 @@
+---
+title: Manus Agent 发展与模型栈
+parent: Agents
+nav_order: 1
+---
+
 # Manus Agent 发展时间线与模型栈调研
 
 > 更新时间：2026-08-17  
