@@ -2,9 +2,23 @@
 
 公开文档站：[https://tony00fang.github.io/notes/](https://tony00fang.github.io/notes/)
 
-长期笔记、分析文档、研究记录和写作模板。
+长期笔记、分析文档、研究记录和写作模板。用 VitePress 构建，发布到 GitHub Pages。
 
-## 本地目录
+## 本地
+
+```bash
+npm install
+npm test
+npm run dev
+```
+
+生产构建：
+
+```bash
+npm run build
+```
+
+## 目录
 
 ```text
 .
@@ -14,4 +28,4 @@
 └── templates/
 ```
 
-源码推到 `main` 后，GitHub Pages 会自动构建。
+推到 `main` 后，GitHub Actions 会自动构建并发布。

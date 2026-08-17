@@ -1,5 +1,4 @@
-_site/
-.sass-cache/
-.jekyll-cache/
-.jekyll-metadata
+node_modules/
+.vitepress/dist/
+.vitepress/cache/
 .DS_Store

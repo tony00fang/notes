@@ -1,7 +1,5 @@
 ---
 title: 分析笔记模板
-parent: Templates
-nav_order: 1
 ---
 
 # 标题

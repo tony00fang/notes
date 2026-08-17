@@ -1,7 +1,6 @@
 ---
 title: Manus Agent 发展与模型栈
-parent: Agents
-nav_order: 1
+outline: deep
 ---
 
 # Manus Agent 发展时间线与模型栈调研

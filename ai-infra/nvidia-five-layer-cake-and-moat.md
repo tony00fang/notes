@@ -1,7 +1,6 @@
 ---
 title: NVIDIA 五层蛋糕与护城河
-parent: AI Infra
-nav_order: 1
+outline: deep
 ---
 
 # NVIDIA 五层蛋糕、控制力与护城河总结
