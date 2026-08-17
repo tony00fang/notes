@@ -2,4 +2,4 @@
 
 可复用的写作模板。
 
-- [分析笔记模板](/templates/analysis-note)
+- [分析笔记模板](./analysis-note)

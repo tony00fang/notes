@@ -24,4 +24,17 @@ describe('notes site', () => {
       expect(existsSync(pagePath(link)), link).toBe(true)
     }
   })
+
+  it('keeps markdown article links relative so they stay under /notes/', () => {
+    const files = [
+      'index.md',
+      'ai-infra/index.md',
+      'agents/index.md',
+      'templates/index.md',
+    ]
+    for (const file of files) {
+      const text = readFileSync(join(root, file), 'utf8')
+      expect(text, file).not.toMatch(/\]\(\/[a-zA-Z]/)
+    }
+  })
 })
