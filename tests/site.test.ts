@@ -39,10 +39,21 @@ describe('notes site', () => {
   })
 
   it('keeps markdown article links relative so they stay under /notes/', () => {
-    const files = ['ai-infra/index.md', 'agents/index.md', 'templates/index.md']
+    const files = [
+      'ai-daily-brief/index.md',
+      'ai-infra/index.md',
+      'agents/index.md',
+      'templates/index.md',
+    ]
     for (const file of files) {
       const text = readFileSync(join(root, file), 'utf8')
       expect(text, file).not.toMatch(/\]\(\/[a-zA-Z]/)
     }
+  })
+
+  it('keeps the daily brief public index free of private thread identifiers', () => {
+    const text = readFileSync(join(root, 'ai-daily-brief/index.md'), 'utf8')
+    expect(text).not.toContain('source_thread_id')
+    expect(text).not.toMatch(/01[a-z0-9]{6,}-[a-z0-9-]{12,}/i)
   })
 })

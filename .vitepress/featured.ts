@@ -1,5 +1,11 @@
 export const featuredNotes = [
   {
+    section: 'AI Daily Brief',
+    title: '每日 AI 进展简报',
+    href: '/ai-daily-brief/',
+    summary: '追踪过去 24 小时的重要 AI 应用、Coding、模型、训练、推理、Infra 与产业动态。',
+  },
+  {
     section: 'AI Infra',
     title: 'NVIDIA 五层蛋糕与护城河',
     href: '/ai-infra/nvidia-five-layer-cake-and-moat',

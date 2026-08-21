@@ -23,9 +23,12 @@ npm run build
 ```text
 .
 ├── index.md
+├── ai-daily-brief/
 ├── ai-infra/
 ├── agents/
 └── templates/
 ```
+
+`ai-daily-brief/` 由本机 Codex Automation 每日生成、校验并推送。
 
 推到 `main` 后，GitHub Actions 会自动构建并发布。

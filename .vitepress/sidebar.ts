@@ -1,5 +1,12 @@
 export const sidebar = [
   {
+    text: 'AI Daily Brief',
+    collapsed: false,
+    items: [
+      { text: '历史归档', link: '/ai-daily-brief/' },
+    ],
+  },
+  {
     text: 'AI Infra',
     collapsed: false,
     items: [

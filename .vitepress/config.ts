@@ -12,6 +12,7 @@ export default defineConfig({
   themeConfig: {
     nav: [
       { text: 'Home', link: '/' },
+      { text: 'AI Daily Brief', link: '/ai-daily-brief/' },
       { text: 'AI Infra', link: '/ai-infra/' },
       { text: 'Agents', link: '/agents/' },
       { text: 'Templates', link: '/templates/' },
