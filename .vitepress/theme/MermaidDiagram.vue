@@ -13,7 +13,7 @@ let themeObserver: MutationObserver | undefined
 let renderVersion = 0
 
 const mermaidModuleUrl =
-  'https://cdn.jsdelivr.net/npm/mermaid@11.15.0/dist/mermaid.esm.min.mjs'
+  'https://cdn.jsdelivr.net/npm/mermaid@11.17.0/dist/mermaid.esm.min.mjs'
 
 async function renderDiagram(): Promise<void> {
   const version = ++renderVersion
