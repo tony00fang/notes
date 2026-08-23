@@ -13,6 +13,12 @@ export const featuredNotes = [
   },
   {
     section: 'Agents',
+    title: '从传统软件工程到 Agent 工程',
+    href: '/agents/agent-and-traditional-software-engineering',
+    summary: '用状态转移、Context Compiler 与确定性外壳理解生产级 Agent。',
+  },
+  {
+    section: 'Agents',
     title: 'Manus Agent 发展与模型栈',
     href: '/agents/manus-agent-development-and-model-stack',
     summary: '产品路线、多模型路由，以及 Context Engineering。',
