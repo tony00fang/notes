@@ -1,0 +1,156 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+  <title id="title">Agent 的运行时序与系统结构双视图</title>
+  <desc id="desc">左侧展示 Prompt、LLM、Tool、Observation 的时间循环，右侧展示 State、Context、Model、Action、Environment 的结构闭环。</desc>
+  <defs>
+    <style>
+      text { font-family: "PingFang SC", "Noto Sans SC", "Microsoft YaHei", system-ui, sans-serif; fill: #1c1814; }
+      .bg { fill: #f7f3ea; }
+      .panel { fill: #fffaf1; stroke: #d9d0c1; stroke-width: 1.5; filter: url(#shadow); }
+      .kicker { fill: #6b4f2a; font-size: 14px; font-weight: 700; letter-spacing: 2px; }
+      .title { font-size: 34px; font-weight: 700; letter-spacing: -.5px; }
+      .subtitle { fill: #6f6457; font-size: 17px; }
+      .panel-title { font-size: 24px; font-weight: 700; }
+      .panel-subtitle { fill: #6f6457; font-size: 13px; letter-spacing: 1.4px; }
+      .node { fill: #ebe4d6; stroke: #d9d0c1; stroke-width: 1.4; }
+      .node-accent { fill: #fffaf1; stroke: #6b4f2a; stroke-width: 2; }
+      .node-title { font-size: 17px; font-weight: 700; }
+      .node-note { fill: #6f6457; font-size: 12px; }
+      .step { fill: #6b4f2a; font-size: 11px; font-weight: 700; }
+      .center-label { fill: #6b4f2a; font-size: 18px; font-weight: 700; text-anchor: middle; }
+      .center-note { fill: #6f6457; font-size: 12px; text-anchor: middle; }
+      .arrow { stroke: #a57c45; stroke-width: 2.4; fill: none; marker-end: url(#arrow); }
+      .arrow-muted { stroke: #d9d0c1; stroke-width: 1.8; fill: none; marker-end: url(#arrow-muted); }
+      .loop-label { fill: #6f6457; font-size: 12px; }
+      .badge { fill: #6b4f2a; }
+      .badge-text { fill: #f7f3ea; font-size: 12px; font-weight: 700; text-anchor: middle; dominant-baseline: middle; }
+      .arrowhead { fill: #a57c45; }
+      .arrowhead-muted { fill: #d9d0c1; }
+      .runtime-center { fill: #ebe4d6; stroke: #6b4f2a; stroke-width: 2; }
+      @media (prefers-color-scheme: dark) {
+        text { fill: #f0e7d8; }
+        .bg { fill: #161310; }
+        .panel, .node-accent { fill: #221e18; stroke-color: #3a3228; }
+        .panel { stroke: #3a3228; }
+        .kicker, .center-label { fill: #d4b483; }
+        .subtitle, .panel-subtitle, .node-note, .center-note, .loop-label { fill: #c2b6a4; }
+        .node, .runtime-center { fill: #2a241c; stroke: #3a3228; }
+        .node-accent { stroke: #d4b483; }
+        .arrow { stroke: #b38c55; }
+        .arrow-muted { stroke: #3a3228; }
+        .badge { fill: #d4b483; }
+        .badge-text { fill: #161310; }
+        .arrowhead { fill: #b38c55; }
+        .arrowhead-muted { fill: #3a3228; }
+      }
+</style>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="var(--shadow)"/>
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" class="arrowhead"/>
+    </marker>
+    <marker id="arrow-muted" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" class="arrowhead-muted"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" width="1200" height="720" rx="28"/>
+  <text class="kicker" x="56" y="56">AGENT ENGINEERING</text>
+  <text class="title" x="56" y="99">同一个 Agent 的两种视图</text>
+  <text class="subtitle" x="56" y="128">时间上是 LLM 与工具的循环；结构上是状态经由上下文、模型和行动不断演化。</text>
+
+  <rect class="panel" x="48" y="160" width="536" height="506" rx="24"/>
+  <text class="panel-title" x="80" y="205">运行时序</text>
+  <text class="panel-subtitle" x="80" y="230">TIME-ORDERED VIEW</text>
+
+  <circle class="badge" cx="104" cy="283" r="15"/><text class="badge-text" x="104" y="283">1</text>
+  <rect class="node-accent" x="130" y="252" width="126" height="64" rx="14"/>
+  <text class="node-title" x="193" y="279" text-anchor="middle">Prompt</text>
+  <text class="node-note" x="193" y="300" text-anchor="middle">当前 Context</text>
+
+  <path class="arrow" d="M 256 284 H 314"/>
+  <circle class="badge" cx="338" cy="283" r="15"/><text class="badge-text" x="338" y="283">2</text>
+  <rect class="node-accent" x="364" y="252" width="126" height="64" rx="14"/>
+  <text class="node-title" x="427" y="279" text-anchor="middle">LLM</text>
+  <text class="node-note" x="427" y="300" text-anchor="middle">选择下一步</text>
+
+  <path class="arrow" d="M 427 316 V 364"/>
+  <circle class="badge" cx="427" cy="388" r="15"/><text class="badge-text" x="427" y="388">3</text>
+  <rect class="node" x="364" y="412" width="126" height="64" rx="14"/>
+  <text class="node-title" x="427" y="439" text-anchor="middle">Tool</text>
+  <text class="node-note" x="427" y="460" text-anchor="middle">执行动作</text>
+
+  <path class="arrow" d="M 364 444 H 306"/>
+  <circle class="badge" cx="282" cy="444" r="15"/><text class="badge-text" x="282" y="444">4</text>
+  <rect class="node" x="130" y="412" width="126" height="64" rx="14"/>
+  <text class="node-title" x="193" y="439" text-anchor="middle">Observation</text>
+  <text class="node-note" x="193" y="460" text-anchor="middle">工具结果</text>
+
+  <path class="arrow" d="M 193 476 V 520 H 302"/>
+  <circle class="badge" cx="326" cy="520" r="15"/><text class="badge-text" x="326" y="520">5</text>
+  <rect class="node" x="350" y="488" width="140" height="64" rx="14"/>
+  <text class="node-title" x="420" y="515" text-anchor="middle">Update State</text>
+  <text class="node-note" x="420" y="536" text-anchor="middle">写入事实与进度</text>
+
+  <path class="arrow" d="M 350 520 H 220 V 578 H 386"/>
+  <rect class="node-accent" x="386" y="566" width="132" height="56" rx="14"/>
+  <text class="node-title" x="452" y="590" text-anchor="middle">Next Context</text>
+  <text class="node-note" x="452" y="610" text-anchor="middle">重建下一轮输入</text>
+  <path class="arrow" d="M 518 594 H 542 V 284 H 490"/>
+  <text class="loop-label" x="92" y="632">循环直到 Final Answer、预算耗尽或 Runtime 终止。</text>
+
+  <rect class="panel" x="616" y="160" width="536" height="506" rx="24"/>
+  <text class="panel-title" x="648" y="205">系统结构</text>
+  <text class="panel-subtitle" x="648" y="230">STRUCTURAL VIEW</text>
+
+  <ellipse cx="884" cy="422" rx="94" ry="72" class="runtime-center" stroke-width="2"/>
+  <text class="center-label" x="884" y="412">Agent Runtime</text>
+  <text class="center-note" x="884" y="436">维护状态 · 驱动循环 · 执行治理</text>
+
+  <rect class="node-accent" x="820" y="252" width="128" height="58" rx="14"/>
+  <text class="node-title" x="884" y="278" text-anchor="middle">State</text>
+  <text class="node-note" x="884" y="298" text-anchor="middle">任务真实状态</text>
+
+  <rect class="node" x="980" y="300" width="128" height="58" rx="14"/>
+  <text class="node-title" x="1044" y="326" text-anchor="middle">Context</text>
+  <text class="node-note" x="1044" y="346" text-anchor="middle">面向模型的视图</text>
+
+  <rect class="node-accent" x="1000" y="407" width="110" height="58" rx="14"/>
+  <text class="node-title" x="1055" y="433" text-anchor="middle">Model</text>
+  <text class="node-note" x="1055" y="453" text-anchor="middle">LLM Policy</text>
+
+  <rect class="node" x="952" y="528" width="140" height="58" rx="14"/>
+  <text class="node-title" x="1022" y="554" text-anchor="middle">Action</text>
+  <text class="node-note" x="1022" y="574" text-anchor="middle">Proposed Action</text>
+
+  <rect class="node" x="784" y="576" width="150" height="58" rx="14"/>
+  <text class="node-title" x="859" y="602" text-anchor="middle">Tool Runtime</text>
+  <text class="node-note" x="859" y="622" text-anchor="middle">校验与可靠执行</text>
+
+  <rect class="node" x="638" y="508" width="136" height="58" rx="14"/>
+  <text class="node-title" x="706" y="534" text-anchor="middle">Environment</text>
+  <text class="node-note" x="706" y="554" text-anchor="middle">外部世界</text>
+
+  <rect class="node" x="646" y="382" width="140" height="58" rx="14"/>
+  <text class="node-title" x="716" y="408" text-anchor="middle">Observation</text>
+  <text class="node-note" x="716" y="428" text-anchor="middle">环境反馈</text>
+
+  <rect class="node" x="674" y="274" width="126" height="58" rx="14"/>
+  <text class="node-title" x="737" y="300" text-anchor="middle">State Update</text>
+  <text class="node-note" x="737" y="320" text-anchor="middle">归并新事实</text>
+
+  <path class="arrow-muted" d="M 948 281 C 985 282 1010 290 1028 300"/>
+  <path class="arrow-muted" d="M 1060 358 C 1070 374 1070 390 1064 407"/>
+  <path class="arrow-muted" d="M 1045 465 C 1044 493 1034 511 1024 528"/>
+  <path class="arrow-muted" d="M 966 575 C 942 590 932 596 934 598"/>
+  <path class="arrow-muted" d="M 784 605 C 748 600 724 584 712 566"/>
+  <path class="arrow-muted" d="M 696 508 C 685 482 687 456 700 440"/>
+  <path class="arrow-muted" d="M 716 382 C 718 360 723 345 731 332"/>
+  <path class="arrow-muted" d="M 800 296 C 808 290 814 286 820 283"/>
+
+  <path class="arrow" d="M 884 350 V 310"/>
+  <path class="arrow" d="M 978 399 L 1000 419"/>
+  <path class="arrow" d="M 960 470 L 978 523"/>
+  <path class="arrow" d="M 800 488 L 755 508"/>
+  <text class="loop-label" x="648" y="642">结构图说明“谁负责什么”；时序图说明“它们何时发生”。</text>
+</svg>

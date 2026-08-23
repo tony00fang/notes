@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">概率性内核与确定性外壳</title>
+  <desc id="desc">LLM 作为概率性策略内核，被治理、工具运行时、状态和可观测性组成的确定性外壳包围。</desc>
+  <defs>
+    <style>
+      text { font-family: "PingFang SC", "Noto Sans SC", "Microsoft YaHei", system-ui, sans-serif; fill: #1c1814; }
+      .bg { fill: #f7f3ea; }
+      .kicker { fill: #6b4f2a; font-size: 14px; font-weight: 700; letter-spacing: 2px; }
+      .title { font-size: 34px; font-weight: 700; }
+      .subtitle { fill: #6f6457; font-size: 17px; }
+      .outer { fill: #f3eadb; stroke: #d9d0c1; stroke-width: 1.5; }
+      .shell { fill: #eee4d3; stroke: #a57c45; stroke-width: 2; }
+      .core { fill: #d8c3a2; stroke: #6b4f2a; stroke-width: 2.5; }
+      .layer-label { font-size: 18px; font-weight: 700; }
+      .layer-note { fill: #6f6457; font-size: 13px; }
+      .core-title { font-size: 28px; font-weight: 750; text-anchor: middle; }
+      .core-note { fill: #6f6457; font-size: 14px; text-anchor: middle; }
+      .chip { fill: #fffaf1; stroke: #d9d0c1; stroke-width: 1.3; }
+      .chip-text { font-size: 13px; font-weight: 650; text-anchor: middle; dominant-baseline: middle; }
+      .side-box { fill: #fffaf1; stroke: #d9d0c1; stroke-width: 1.5; filter: url(#shadow); }
+      .side-title { font-size: 18px; font-weight: 700; text-anchor: middle; }
+      .side-note { fill: #6f6457; font-size: 12px; text-anchor: middle; }
+      .arrow { stroke: #a57c45; stroke-width: 2.5; fill: none; marker-end: url(#arrow); }
+      .arrow-back { stroke: #4f6a57; stroke-width: 2.2; fill: none; marker-end: url(#arrow-green); stroke-dasharray: 7 6; }
+      .label { fill: #6f6457; font-size: 12px; }
+      .arrowhead { fill: #a57c45; }
+      .arrowhead-green { fill: #4f6a57; }
+      @media (prefers-color-scheme: dark) {
+        text { fill: #f0e7d8; }
+        .bg { fill: #161310; }
+        .kicker { fill: #d4b483; }
+        .subtitle, .layer-note, .core-note, .side-note, .label { fill: #c2b6a4; }
+        .outer { fill: #282219; stroke: #3a3228; }
+        .shell { fill: #30291f; stroke: #b38c55; }
+        .core { fill: #5a472e; stroke: #d4b483; }
+        .chip, .side-box { fill: #221e18; stroke: #3a3228; }
+        .arrow { stroke: #b38c55; }
+        .arrow-back { stroke: #91b29a; }
+        .arrowhead { fill: #b38c55; }
+        .arrowhead-green { fill: #91b29a; }
+      }
+</style>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="var(--shadow)"/>
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" class="arrowhead"/>
+    </marker>
+    <marker id="arrow-green" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" class="arrowhead-green"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" width="1200" height="700" rx="28"/>
+  <text class="kicker" x="56" y="56">PRODUCTION AGENT</text>
+  <text class="title" x="56" y="99">概率性内核，确定性外壳</text>
+  <text class="subtitle" x="56" y="128">模型负责开放性判断；软件负责把判断限制在可验证、可授权、可审计的边界内。</text>
+
+  <rect class="outer" x="265" y="172" width="670" height="452" rx="44"/>
+  <text class="layer-label" x="305" y="211">State Runtime &amp; Observability</text>
+  <text class="layer-note" x="305" y="235">任务状态、事件轨迹、预算、错误、评测与审计</text>
+
+  <rect class="shell" x="345" y="254" width="510" height="300" rx="38"/>
+  <text class="layer-label" x="385" y="294">Deterministic Shell</text>
+  <text class="layer-note" x="385" y="318">Governor · Permission · Schema · Retry · Transaction · Sandbox</text>
+
+  <ellipse class="core" cx="600" cy="420" rx="142" ry="104"/>
+  <text class="core-title" x="600" y="405">LLM Policy</text>
+  <text class="core-title" x="600" y="440">概率性内核</text>
+  <text class="core-note" x="600" y="471">理解 · 判断 · 规划 · 工具选择</text>
+
+  <rect class="chip" x="382" y="348" width="112" height="38" rx="19"/>
+  <text class="chip-text" x="438" y="367">Schema</text>
+  <rect class="chip" x="706" y="348" width="112" height="38" rx="19"/>
+  <text class="chip-text" x="762" y="367">Permission</text>
+  <rect class="chip" x="382" y="474" width="112" height="38" rx="19"/>
+  <text class="chip-text" x="438" y="493">Risk Gate</text>
+  <rect class="chip" x="706" y="474" width="112" height="38" rx="19"/>
+  <text class="chip-text" x="762" y="493">Idempotency</text>
+
+  <rect class="side-box" x="46" y="315" width="176" height="118" rx="22"/>
+  <text class="side-title" x="134" y="352">Context</text>
+  <text class="side-note" x="134" y="377">目标、历史、工具</text>
+  <text class="side-note" x="134" y="397">权限、预算、观测</text>
+
+  <rect class="side-box" x="978" y="281" width="176" height="118" rx="22"/>
+  <text class="side-title" x="1066" y="318">Tool Runtime</text>
+  <text class="side-note" x="1066" y="343">API、文件、终端</text>
+  <text class="side-note" x="1066" y="363">数据库、真实系统</text>
+
+  <rect class="side-box" x="978" y="457" width="176" height="104" rx="22"/>
+  <text class="side-title" x="1066" y="493">Environment</text>
+  <text class="side-note" x="1066" y="518">真实资源与业务状态</text>
+  <text class="side-note" x="1066" y="538">返回 Observation</text>
+
+  <path class="arrow" d="M 222 374 H 327 C 380 374 410 390 458 408"/>
+  <text class="label" x="252" y="359">Prompt / Messages</text>
+
+  <path class="arrow" d="M 742 408 C 830 394 880 340 978 340"/>
+  <text class="label" x="812" y="365">Proposed Action</text>
+
+  <path class="arrow" d="M 1066 399 V 457"/>
+  <text class="label" x="1080" y="435">Execute</text>
+
+  <path class="arrow-back" d="M 978 520 C 900 594 792 612 682 578 C 620 559 576 539 545 521"/>
+  <text class="label" x="748" y="612">Observation → State Update → Next Context</text>
+
+  <text class="layer-note" x="304" y="590">外层越靠近真实世界，越应依赖确定性机制；模型自由度应与动作风险成反比。</text>
+</svg>
