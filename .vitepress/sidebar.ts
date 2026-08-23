@@ -19,6 +19,7 @@ export const sidebar = [
     collapsed: false,
     items: [
       { text: '概览', link: '/agents/' },
+      { text: '从传统软件工程到 Agent 工程', link: '/agents/agent-and-traditional-software-engineering' },
       { text: 'Manus Agent 发展与模型栈', link: '/agents/manus-agent-development-and-model-stack' },
     ],
   },
