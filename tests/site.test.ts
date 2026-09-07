@@ -13,9 +13,9 @@ function pagePath(link: string): string {
 }
 
 describe('notes site', () => {
-  it('publishes under the GitHub Pages project path', () => {
+  it('publishes at the custom domain root', () => {
     const config = readFileSync(join(root, '.vitepress/config.ts'), 'utf8')
-    expect(config).toContain("base: '/notes/'")
+    expect(config).toContain("base: '/'")
   })
 
   it('keeps every sidebar link pointing at a markdown file', () => {
@@ -38,7 +38,7 @@ describe('notes site', () => {
     expect(source).toContain('withBase(note.href)')
   })
 
-  it('keeps markdown article links relative so they stay under /notes/', () => {
+  it('keeps markdown article links relative', () => {
     const files = [
       'ai-daily-brief/index.md',
       'ai-infra/index.md',

@@ -42,12 +42,12 @@ jobs:
         run: npm test
       - name: Build with VitePress
         run: npm run build
-      - name: Check built links stay under /notes/
+      - name: Check built links use the domain root
         run: |
           grep -q 'VPNav' .vitepress/dist/index.html
           grep -q 'note-home' .vitepress/dist/index.html
-          grep -q '/notes/ai-daily-brief/' .vitepress/dist/index.html
-          grep -q '/notes/ai-infra/nvidia-five-layer-cake-and-moat' .vitepress/dist/index.html
+          grep -q '/ai-daily-brief/' .vitepress/dist/index.html
+          grep -q '/ai-infra/nvidia-five-layer-cake-and-moat' .vitepress/dist/index.html
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v5
         with:

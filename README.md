@@ -1,6 +1,6 @@
 # Notes
 
-公开文档站：[https://tony00fang.github.io/notes/](https://tony00fang.github.io/notes/)
+公开文档站：[https://tony00fang.space/](https://tony00fang.space/)
 
 长期笔记、分析文档、研究记录和写作模板。用 VitePress 构建，发布到 GitHub Pages。
 

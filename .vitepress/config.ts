@@ -5,7 +5,7 @@ export default defineConfig({
   title: 'Notes',
   description: '长期笔记、分析文档与研究记录',
   lang: 'zh-CN',
-  base: '/notes/',
+  base: '/',
   srcExclude: ['README.md'],
   cleanUrls: true,
   lastUpdated: true,
